@@ -1,9 +1,9 @@
-/* eslint valid-jsdoc: "off" */
+const { LOGIN_COOKIE_MAX_AGE } = require('../app/constant');
 
 module.exports = appInfo => {
   const keys = appInfo.name + '_1574341770283_8277';
 
-  const middleware = [];
+  const middleware = ['processResBody', 'checkLogin', 'validateParams'];
 
   const userConfig = {};
 
@@ -19,10 +19,28 @@ module.exports = appInfo => {
     },
   };
 
+  const security = {
+    csrf: { enable: false },
+  };
+
+  const session = {
+    maxAge: LOGIN_COOKIE_MAX_AGE,
+  };
+
+  const checkLogin = {
+    ignore: [ // 登录和注册接口不检测登录状态"
+      '/user/login',
+      ({ path, method }) => (path === '/user' && method === 'POST'),
+    ],
+  };
+
   return {
+    ...userConfig,
     keys,
     middleware,
     sequelize,
-    ...userConfig,
+    security,
+    session,
+    checkLogin,
   };
 };
