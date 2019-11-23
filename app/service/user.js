@@ -1,4 +1,5 @@
 const { Service } = require('egg');
+const { LOGIN_COOKIE_MAX_AGE } = require('../constant');
 
 module.exports = class UserService extends Service {
   createUser(newUserInfo) {
@@ -7,7 +8,7 @@ module.exports = class UserService extends Service {
 
   setLoginCookieAndSession(userInfo) {
     const { id } = userInfo;
-    this.ctx.cookies.set('id', id);
+    this.ctx.cookies.set('id', id, { maxAge: LOGIN_COOKIE_MAX_AGE });
     this.ctx.session[`loginUser-${id}`] = userInfo;
   }
 
