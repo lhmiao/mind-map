@@ -7,8 +7,8 @@ module.exports = app => {
       primaryKey: true,
       autoIncrement: true,
     },
-    request_user_id: INTEGER,
-    response_user_id: INTEGER,
+    from_id: INTEGER,
+    to_id: INTEGER,
   });
 
   return FriendApply;
