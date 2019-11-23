@@ -19,7 +19,8 @@ module.exports = class FriendController extends Controller {
   async deleteFriend() {
     try {
       const user_id = this.ctx.cookies.get('id');
-      const { friend_id } = this.ctx.params;
+      const { friend_id } = this.ctx.query;
+      await this.service.user.isUserIdExist(friend_id);
       await this.service.friend.destroyFriend(user_id, friend_id);
       this.ctx.body = '';
     } catch (error) {
@@ -66,9 +67,10 @@ module.exports = class FriendController extends Controller {
 
   async agreeFriendApply() {
     try {
-      const from_id = this.ctx.cookies.get('id');
-      const { friend_id: to_id } = this.ctx.request.body;
+      const to_id = this.ctx.cookies.get('id');
+      const { friend_id: from_id } = this.ctx.request.body;
       await this.service.user.isUserIdExist(to_id);
+      await this.service.friend.isApplyExist({ from_id, to_id });
       await this.service.friend.agreeFriendApply(from_id, to_id);
       this.ctx.body = '';
     } catch (error) {
@@ -84,8 +86,9 @@ module.exports = class FriendController extends Controller {
   async disagreeFriendApply() {
     try {
       const to_id = this.ctx.cookies.get('id');
-      const { friend_id: from_id } = this.ctx.params;
+      const { friend_id: from_id } = this.ctx.query;
       await this.service.user.isUserIdExist(from_id);
+      await this.service.friend.isApplyExist({ from_id, to_id });
       await this.service.friend.disagreeFriendApply(from_id, to_id);
       this.ctx.body = '';
     } catch (error) {

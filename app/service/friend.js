@@ -7,7 +7,7 @@ module.exports = class FriendService extends Service {
   }
 
   destroyFriend(user_id, friend_id) {
-    const Op = this.app.Sequelize;
+    const { Op } = this.app.Sequelize;
     const where = {
       [Op.or]: [
         { user_id, friend_id },
@@ -17,21 +17,32 @@ module.exports = class FriendService extends Service {
     return this.ctx.model.FriendRelation.destroy({ where });
   }
 
-  getApplyList(from_id) {
-    const where = { from_id };
+  getApplyList(to_id) {
+    const where = { to_id };
     return this.ctx.model.FriendApply.findAll({ where });
   }
 
-  createFriendApply(user_id, friend_id) {
-    return this.ctx.model.FriendApply.create({ user_id, friend_id });
+  createFriendApply(from_id, to_id) {
+    return this.ctx.model.FriendApply.create({ from_id, to_id });
+  }
+
+  async isApplyExist(where) {
+    const record = await this.ctx.model.FriendApply.findOne({ where });
+    if (record) return Promise.resolve('好友申请存在');
+    return Promise.reject({ name: '好友申请不存在' });
   }
 
   agreeFriendApply(from_id, to_id) {
     return this.ctx.model.transaction(async transaction => {
       const where = { from_id, to_id };
       await this.ctx.model.FriendApply.destroy({ where, transaction });
-      await this.ctx.model.FriendRelation.create({ from_id, to_id }, { transaction });
-      await this.ctx.model.FriendRelation.create({ from_id: to_id, to_id: from_id }, { transaction });
+      await this.ctx.model.FriendRelation.bulkCreate(
+        [
+          { user_id: from_id, friend_id: to_id },
+          { user_id: to_id, friend_id: from_id },
+        ],
+        { transaction }
+      );
     });
   }
 

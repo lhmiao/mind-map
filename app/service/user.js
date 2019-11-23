@@ -19,8 +19,8 @@ module.exports = class UserService extends Service {
   async checkUserInfo({ username, password }) {
     const where = { username };
     const record = await this.ctx.model.User.findOne({ where });
-    if (!record) return Promise.reject({ name: '该用户不存在' }); // eslint-disable-line
-    if (record.password !== password) return Promise.reject({ name: '密码错误' }); // eslint-disable-line
+    if (!record) return Promise.reject({ name: '该用户不存在' });
+    if (record.password !== password) return Promise.reject({ name: '密码错误' });
     return Promise.resolve(record);
   }
 
@@ -30,8 +30,8 @@ module.exports = class UserService extends Service {
   }
 
   async isUserIdExist(id) {
-    const record = await this.ctx.model.User.findById(id);
+    const record = await this.ctx.model.User.findByPk(id);
     if (record) return Promise.resolve(true);
-    return Promise.reject({ name: `不存在 id 为"${id}"的用户` }); // eslint-disable-line
+    return Promise.reject({ name: `不存在 id 为 ${id} 的用户` });
   }
 };
