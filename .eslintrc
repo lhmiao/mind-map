@@ -2,6 +2,7 @@
   "extends": "eslint-config-egg",
   "rules": {
     "strict": "off",
-    "array-bracket-spacing": "off"
+    "array-bracket-spacing": "off",
+    "prefer-promise-reject-errors": "off"
   }
 }
