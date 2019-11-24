@@ -6,6 +6,7 @@ module.exports = class FriendController extends Controller {
       const id = this.ctx.cookies.get('id');
       const friendList = await this.service.friend.getFriendList(id);
       const data = friendList.map(item => {
+        // 这里不要用展开运算符，否则会 stringify 失败
         const { friend_id, user_info: { username } } = item;
         return { id: friend_id, username };
       });
@@ -42,6 +43,7 @@ module.exports = class FriendController extends Controller {
       const id = this.ctx.cookies.get('id');
       const applyList = await this.service.friend.getApplyList(id);
       const data = applyList.map(item => {
+        // 这里不要用展开运算符，否则会 stringify 失败
         const { from_id, user_info: { username } } = item;
         return { id: from_id, username };
       });
