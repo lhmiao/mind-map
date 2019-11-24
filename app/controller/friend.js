@@ -5,7 +5,11 @@ module.exports = class FriendController extends Controller {
     try {
       const id = this.ctx.cookies.get('id');
       const friendList = await this.service.friend.getFriendList(id);
-      this.ctx.body = friendList;
+      const data = friendList.map(item => {
+        const { friend_id, user_info: { username } } = item;
+        return { id: friend_id, username };
+      });
+      this.ctx.body = data;
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {
@@ -36,8 +40,12 @@ module.exports = class FriendController extends Controller {
   async getApplyList() {
     try {
       const id = this.ctx.cookies.get('id');
-      const friendList = await this.service.friend.getApplyList(id);
-      this.ctx.body = friendList;
+      const applyList = await this.service.friend.getApplyList(id);
+      const data = applyList.map(item => {
+        const { from_id, user_info: { username } } = item;
+        return { id: from_id, username };
+      });
+      this.ctx.body = data;
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {

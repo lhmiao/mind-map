@@ -11,5 +11,14 @@ module.exports = app => {
     to_id: INTEGER,
   });
 
+  FriendApply.associate = () => {
+    FriendApply.belongsTo(app.model.User, {
+      foreignKey: 'from_id',
+      targetKey: 'id',
+      constraints: false,
+      as: 'user_info',
+    });
+  };
+
   return FriendApply;
 };

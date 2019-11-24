@@ -3,7 +3,15 @@ const { Service } = require('egg');
 module.exports = class FriendService extends Service {
   getFriendList(user_id) {
     const where = { user_id };
-    return this.ctx.model.FriendRelation.findAll({ where });
+    return this.ctx.model.FriendRelation.findAll({
+      where,
+      attributes: ['friend_id'],
+      include: [{
+        model: this.ctx.model.User,
+        attributes: ['username'],
+        as: 'user_info',
+      }],
+    });
   }
 
   destroyFriend(user_id, friend_id) {
@@ -19,7 +27,15 @@ module.exports = class FriendService extends Service {
 
   getApplyList(to_id) {
     const where = { to_id };
-    return this.ctx.model.FriendApply.findAll({ where });
+    return this.ctx.model.FriendApply.findAll({
+      where,
+      attributes: ['from_id'],
+      include: [{
+        model: this.ctx.model.User,
+        attributes: ['username'],
+        as: 'user_info',
+      }],
+    });
   }
 
   createFriendApply(from_id, to_id) {
