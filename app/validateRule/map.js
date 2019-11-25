@@ -1,22 +1,22 @@
 module.exports = {
   get: {
-    '/map/:id': {
+    '/api/v1/map/:id': {
       id: 'id',
     },
   },
   post: {
-    '/map': {
+    '/api/v1/map': {
       config: 'object',
     },
   },
   put: {
-    '/map/:id': {
+    '/api/v1/map/:id': {
       id: 'id',
       config: 'object',
     },
   },
   delete: {
-    '/map/:id': {
+    '/api/v1/map/:id': {
       id: 'id',
     },
   },

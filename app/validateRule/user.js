@@ -1,16 +1,16 @@
 module.exports = {
   post: {
-    '/user': {
+    '/api/v1/user': {
       username: { type: 'string', max: 50 },
       password: { type: 'string', max: 50 },
     },
-    '/user/login': {
+    '/api/v1/user/login': {
       username: { type: 'string', max: 50 },
       password: { type: 'string', max: 50 },
     },
   },
   put: {
-    '/user': {
+    '/api/v1/user': {
       username: { type: 'string', max: 50 },
       password: { type: 'string', max: 50 },
     },

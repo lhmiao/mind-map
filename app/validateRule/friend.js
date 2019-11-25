@@ -1,17 +1,17 @@
 module.exports = {
   post: {
-    '/friend/apply': {
+    '/api/v1/friend/apply': {
       friend_id: 'id',
     },
-    '/friend/agree': {
+    '/api/v1/friend/agree': {
       friend_id: 'id',
     },
   },
   delete: {
-    '/friend/:friend_id': {
+    '/api/v1/friend/:friend_id': {
       friend_id: 'id',
     },
-    '/friend/agree/:friend_id': {
+    '/api/v1/friend/agree/:friend_id': {
       friend_id: 'id',
     },
   },

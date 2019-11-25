@@ -1,4 +1,4 @@
 module.exports = app => {
   const { router, controller } = app;
-  router.resources('/map', controller.map);
+  router.resources('/api/v1/map', controller.map);
 };

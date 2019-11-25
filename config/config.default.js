@@ -25,8 +25,8 @@ module.exports = appInfo => {
 
   const checkLogin = {
     ignore: [ // 登录和注册接口不检测登录状态"
-      '/user/login',
-      ({ path, method }) => (path === '/user' && method === 'POST'),
+      '/api/v1/user/login',
+      ({ path, method }) => (path === '/api/v1/user' && method === 'POST'),
     ],
   };
 

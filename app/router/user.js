@@ -1,7 +1,7 @@
 module.exports = app => {
   const { router, controller } = app;
-  router.post('/user', controller.user.register);
-  router.put('/user', controller.user.modifyUserInfo);
-  router.post('/user/login', controller.user.login);
-  router.get('/user/logout', controller.user.logout);
+  router.post('/api/v1/user', controller.user.register);
+  router.put('/api/v1/user', controller.user.modifyUserInfo);
+  router.post('/api/v1/user/login', controller.user.login);
+  router.get('/api/v1/user/logout', controller.user.logout);
 };
