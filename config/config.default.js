@@ -7,18 +7,6 @@ module.exports = appInfo => {
 
   const userConfig = {};
 
-  const sequelize = {
-    dialect: 'mysql',
-    database: 'mind_map',
-    host: '127.0.0.1',
-    username: 'root',
-    password: '123456',
-    define: {
-      freezeTableName: true,
-      timestamps: false,
-    },
-  };
-
   const session = {
     maxAge: LOGIN_COOKIE_MAX_AGE,
   };
@@ -34,7 +22,6 @@ module.exports = appInfo => {
     ...userConfig,
     keys,
     middleware,
-    sequelize,
     session,
     checkLogin,
   };
