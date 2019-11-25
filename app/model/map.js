@@ -1,5 +1,5 @@
 module.exports = app => {
-  const { INTEGER, BLOB, DATE } = app.Sequelize;
+  const { INTEGER, DATE, JSON: JSON_TYPE } = app.Sequelize;
 
   const MapModel = app.model.define('map', {
     id: {
@@ -7,8 +7,8 @@ module.exports = app => {
       primaryKey: true,
       autoIncrement: true,
     },
-    file_blob: {
-      type: BLOB,
+    config: {
+      type: JSON_TYPE,
       allowNull: false,
     },
     created_at: {
@@ -19,7 +19,20 @@ module.exports = app => {
       type: DATE,
       allowNull: true,
     },
+    user_id: {
+      type: INTEGER,
+      allowNull: false,
+    },
   });
+
+  MapModel.associate = () => {
+    MapModel.belongsTo(app.model.User, {
+      foreignKey: 'user_id',
+      targetKey: 'id',
+      constraints: false,
+      as: 'owner',
+    });
+  };
 
   return MapModel;
 };
