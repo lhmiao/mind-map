@@ -19,10 +19,6 @@ module.exports = appInfo => {
     },
   };
 
-  const security = {
-    csrf: { enable: false },
-  };
-
   const session = {
     maxAge: LOGIN_COOKIE_MAX_AGE,
   };
@@ -39,7 +35,6 @@ module.exports = appInfo => {
     keys,
     middleware,
     sequelize,
-    security,
     session,
     checkLogin,
   };
