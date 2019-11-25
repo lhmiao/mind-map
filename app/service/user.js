@@ -12,8 +12,8 @@ module.exports = class UserService extends Service {
     this.ctx.session[`loginUser-${id}`] = userInfo;
   }
 
-  updateUser(userInfo) {
-    const where = { id: userInfo.id };
+  updateUser(id, userInfo) {
+    const where = { id };
     return this.ctx.model.User.update(userInfo, { where });
   }
 

@@ -1,4 +1,5 @@
 const { Controller } = require('egg');
+const { ERROR_CODE } = require('../constant');
 
 module.exports = class FriendController extends Controller {
   async getFriendList() {
@@ -14,7 +15,7 @@ module.exports = class FriendController extends Controller {
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {
-        code: 1,
+        code: ERROR_CODE,
         message: error.name,
         data: '',
       };
@@ -31,7 +32,7 @@ module.exports = class FriendController extends Controller {
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {
-        code: 1,
+        code: ERROR_CODE,
         message: error.name,
         data: '',
       };
@@ -51,7 +52,7 @@ module.exports = class FriendController extends Controller {
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {
-        code: 1,
+        code: ERROR_CODE,
         message: error.name,
         data: '',
       };
@@ -68,7 +69,7 @@ module.exports = class FriendController extends Controller {
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {
-        code: 1,
+        code: ERROR_CODE,
         message: error.name,
         data: '',
       };
@@ -86,7 +87,7 @@ module.exports = class FriendController extends Controller {
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {
-        code: 1,
+        code: ERROR_CODE,
         message: error.name,
         data: '',
       };
@@ -104,7 +105,7 @@ module.exports = class FriendController extends Controller {
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {
-        code: 1,
+        code: ERROR_CODE,
         message: error.name,
         data: '',
       };

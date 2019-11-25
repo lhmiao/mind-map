@@ -1,4 +1,5 @@
 const { Controller } = require('egg');
+const { ERROR_CODE } = require('../constant');
 
 module.exports = class UserController extends Controller {
   async register() {
@@ -10,7 +11,7 @@ module.exports = class UserController extends Controller {
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {
-        code: 1,
+        code: ERROR_CODE,
         message: error.name,
         data: '',
       };
@@ -22,13 +23,13 @@ module.exports = class UserController extends Controller {
       const { username, password } = this.ctx.request.body;
       const id = this.ctx.cookies.get('id');
       const userInfo = { id, username, password };
-      await this.service.user.updateUser({ id, username, password });
+      await this.service.user.updateUser(id, { username, password });
       await this.service.user.setLoginCookieAndSession(userInfo);
       this.ctx.body = '';
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {
-        code: 1,
+        code: ERROR_CODE,
         message: error.name,
         data: '',
       };
@@ -44,7 +45,7 @@ module.exports = class UserController extends Controller {
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {
-        code: 1,
+        code: ERROR_CODE,
         message: error.name,
         data: '',
       };
@@ -59,7 +60,7 @@ module.exports = class UserController extends Controller {
     } catch (error) {
       this.logger.error(error);
       this.ctx.body = {
-        code: 1,
+        code: ERROR_CODE,
         message: error.name,
         data: '',
       };
