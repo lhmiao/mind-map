@@ -1,0 +1,298 @@
+{
+	"variables": [],
+	"info": {
+		"name": "企业合作课2",
+		"_postman_id": "1a3c7194-1970-8113-a64b-907e07a24d7b",
+		"description": "网络安全企业合作课2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "登录",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/user/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"lhm\",\n\t\"password\": \"123456\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "注册",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"zxt\",\n\t\"password\": \"123456\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "修改用户信息",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/user",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"lhm\",\n\t\"password\": \"123456\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "登出",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/user/logout",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "获取好友列表",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/friend",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "获取好友申请列表",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/friend/apply",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "申请添加好友",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/friend/apply",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"friend_id\": 3\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "同意好友申请",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/friend/apply/agree",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"friend_id\": 1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "拒绝好友申请",
+			"request": {
+				"url": {
+					"raw": "http://127.0.0.1:7001/api/v1/friend/apply/agree?friend_id=3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7001",
+					"path": [
+						"api",
+						"v1",
+						"friend",
+						"apply",
+						"agree"
+					],
+					"query": [
+						{
+							"key": "friend_id",
+							"value": "3",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "删除好友",
+			"request": {
+				"url": {
+					"raw": "http://127.0.0.1:7001/api/v1/friend?friend_id=2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7001",
+					"path": [
+						"api",
+						"v1",
+						"friend"
+					],
+					"query": [
+						{
+							"key": "friend_id",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "获取所属所有map",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/map",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "创建map",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/map",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"config\": [\"1\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "获取某个map",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/map/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "修改map",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/map/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"config\": { \"a\": 3 }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "删除map",
+			"request": {
+				"url": "http://127.0.0.1:7001/api/v1/map/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
