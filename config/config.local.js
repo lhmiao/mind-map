@@ -2,7 +2,7 @@ exports.security = {
   csrf: { enable: false }, // 本地开发时为方便用 postman 测试，把 csrf 防御关掉
 };
 
-exports.sequelize = {
+exports.sequelize = { // sequelize 数据库连接配置
   dialect: 'mysql',
   database: 'mind_map',
   host: '127.0.0.1',
